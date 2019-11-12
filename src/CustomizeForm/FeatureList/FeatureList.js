@@ -9,12 +9,7 @@ class FeatureList extends React.Component{
         featureList: [],
         idx: ""
     }
-
-
-
     
-    
-
     render(){
         const featureHash = this.props.featureHash;
         const options = this.props.featureList.map((item, i) => {

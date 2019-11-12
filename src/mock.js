@@ -1,14 +1,11 @@
 import React from 'react';
-import FeatureList from './FeatureList/FeatureList.js';
-
 import './App.css';
+import Summary from './Summary/Summary.js';
+import CustomizeForm from './CustomizeForm/CustomizeForm.js'
 
 // This object will allow us to
 // easily convert numbers into US dollar values
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD'
-});
+
 
 class Mock extends React.Component {
   state = {
@@ -41,30 +38,6 @@ class Mock extends React.Component {
   };
 
   render() {
-    
-    const features = Object.keys(this.props.features).map((feature, idx) => {
-        return <FeatureList updateFeature={this.updateFeature.bind(this)} feature={feature} featureList={this.props.features[feature]} featureHash={feature + '-' + idx} selectedName={this.state.selected[feature].name} key={feature + '-' + idx}/>
-    });
-
-    const summary = Object.keys(this.state.selected).map((feature, idx) => {
-      const featureHash = feature + '-' + idx;
-      const selectedOption = this.state.selected[feature];
-
-      return (
-        <div className="summary__option" key={featureHash}>
-          <div className="summary__option__label">{feature} </div>
-          <div className="summary__option__value">{selectedOption.name}</div>
-          <div className="summary__option__cost">
-            {USCurrencyFormat.format(selectedOption.cost)}
-          </div>
-        </div>
-      );
-    });
-
-    const total = Object.keys(this.state.selected).reduce(
-      (acc, curr) => acc + this.state.selected[curr].cost,
-      0
-    );
 
     return (
       <div className="App">
@@ -72,20 +45,8 @@ class Mock extends React.Component {
           <h1>ELF Computing | Laptops</h1>
         </header>
         <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
-            {features}
-          </form>
-          <section className="main__summary">
-            <h2>Your cart</h2>
-            {summary}
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
-              </div>
-            </div>
-          </section>
+          <CustomizeForm updateFeature={this.updateFeature.bind(this)} features={this.props.features} selected={this.state.selected}/>
+          <Summary selected={this.state.selected}/>
         </main>
       </div>
     );
