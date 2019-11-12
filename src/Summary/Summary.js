@@ -17,7 +17,7 @@ class Summary extends React.Component{
             const featureHash = feature + '-' + idx;
             const selectedOption = this.props.selected[feature];
 
-            return <SummaryItem featureHash={featureHash} feature={feature} selectedOption={selectedOption}/>
+            return <SummaryItem featureHash={featureHash} feature={feature} selectedOption={selectedOption} key={featureHash}/>
         });
         const total = Object.keys(this.props.selected).reduce(
             (acc, curr) => acc + this.props.selected[curr].cost,
