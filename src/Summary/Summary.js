@@ -1,6 +1,7 @@
 import React from 'react';
 import './Summary.css';
 import SummaryItem from './SummaryItem/SummaryItem.js'
+import Total from './Total/Total.js';
 
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -25,15 +26,10 @@ class Summary extends React.Component{
         );
         return(
             <section className="main__summary">
-            <h2>Your cart</h2>
-            {summary}
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
-              </div>
-            </div>
-          </section>
+                <h2>Your cart</h2>
+                {summary}
+                <Total total={USCurrencyFormat.format(total)}/>
+            </section>
         )
     }
 }
