@@ -7,7 +7,10 @@ import './FeatureList.css'
 class FeatureList extends React.Component{
     static defaultProps = {
         featureList: [],
-        idx: ""
+        featureHash: "",
+        selectedName: "",
+        feature: "",
+        updateFeature: function(){}
     }
     
     render(){

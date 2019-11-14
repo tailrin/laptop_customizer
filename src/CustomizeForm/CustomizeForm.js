@@ -2,7 +2,11 @@ import React from 'react';
 import FeatureList from './FeatureList/FeatureList.js';
 
 class CustomizeForm extends React.Component {
-    
+    static defaultProps = {
+        features: {},
+        selected: {},
+        updateFeature: function(){}
+    }
 
     render(){
         const features = Object.keys(this.props.features).map((feature, idx) => {

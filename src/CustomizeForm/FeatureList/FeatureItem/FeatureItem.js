@@ -10,7 +10,9 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 class FeatureItem extends React.Component{
     static defaultProps = {
         item: {name: "", cost: 0},
-        feature: ""
+        feature: "",
+        selectedName: "",
+        updateFeature: function(){}
     }
 
     updateFeature = () =>{
