@@ -28,7 +28,7 @@ class Summary extends React.Component{
             <section className="main__summary">
                 <h2>Your cart</h2>
                 {summary}
-                <Total total={USCurrencyFormat.format(total)}/>
+                <Total total={USCurrencyFormat.format(total)} key={total}/>
             </section>
         )
     }
